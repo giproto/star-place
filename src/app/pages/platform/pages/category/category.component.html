@@ -1,0 +1,51 @@
+<!-- Tela de categorias -->
+<div class="p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg mt-6">
+
+    <!-- Título de nova categoria -->
+    <h2 class="text-2x1 font-semibold text-gray-700 mg-4">Nova Categoria</h2>
+    <hr />
+
+    <!-- Formulário de nova categoria -->
+    <form [formGroup]="categoryForm">
+
+        <!-- Input de nome -->
+        <div class="mb-4">
+            <label class="block text-gray-600 font-medium mb-2">Nome</label>
+            <input 
+                class="w-full p-3 border border-gray-300 rounded shadow-sm focus:ring focus:ring-blue-400"
+                formControlName="name"
+                placeholder="Ex: Restaurantes, Praias, Shoppings, etc"
+            />
+            
+            <!-- If para mostrar ou não o campo obrigatório de acordo com o status de validação do campo -->
+            @if(invalidField('name'))
+            {
+                <span class="text-red-500 text-sm">Campo obrigatório</span>
+            }
+        </div>
+
+        <!-- Input de descrição -->
+        <div class="mb-4">
+            <label class="block text-gray-600 font-medium mb-2">Descrição</label>
+            <textarea
+                class="w-full p-3 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring focus:ring-blue-400"
+                formControlName="description"
+                rows="4"
+                placeholder="Descreva sobre seu local de preferência...">
+            </textarea>
+        
+            <!-- If para mostrar ou não o campo obrigatório de acordo com o status de validação do campo -->
+            @if(invalidField('description'))
+            {
+                <span class="text-red-500 text-sm">Campo obrigatório</span>
+            }
+        </div>
+
+        <!-- Botão de cadastrar -->
+        <button
+            class="w-full bg-blue-600 text-white font-semibold p-3 rounded shadow hover:bg-blue-700"
+            (click)="save()">
+            Cadastrar
+        </button>
+    </form>
+</div>
