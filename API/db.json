@@ -1,14 +1,38 @@
 {
   "categories": [
     {
-      "id": "1",
-      "name": "Restaurantes",
-      "description": "Lugares para alimentação"
+      "id": "4a7f1044-c1e7-4501-af04-60cbd7c74e2f",
+      "name": "Praias",
+      "description": "Lugar para aproveitar o mar"
     },
     {
-      "id": "2",
+      "id": "d1e545c1-7160-459f-a3bf-b629b995e8f6",
+      "name": "Restaurantes",
+      "description": "Lugar para alimentação"
+    },
+    {
+      "id": "b6d01ab0-6f2f-49e8-9e8c-def1c524a858",
       "name": "Shoppings",
-      "description": "Lugares para fazer compras"
+      "description": "Lugar para fazer compras"
     }
-  ]
+  ],
+  "places": [
+    {
+      "id": "56ff1b7a-979d-4929-a54f-54e827031997",
+      "name": "Praia do Forte",
+      "category": "4a7f1044-c1e7-4501-af04-60cbd7c74e2f",
+      "location": "Rua da praia, 900, Praia Grande",
+      "imageUrl": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/3c/51/e3/screenshot-20180304-115521.jpg?w=1200&h=-1&s=1",
+      "feedback": "2"
+    },
+    {
+      "id": "3e17ab47-f5d3-4f2c-9883-f06d671618c2",
+      "name": "Outback Steakhouse",
+      "category": "d1e545c1-7160-459f-a3bf-b629b995e8f6",
+      "location": "Avenida Kennedy, 700, São Bernardo do Campo",
+      "imageUrl": "https://storage.googleapis.com/ancarx-stores-images-prd/0013s000013YYjZAAW.jpeg",
+      "feedback": "5"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

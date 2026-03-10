@@ -3,8 +3,8 @@
 
     <!-- Título e subtítulo do toolbar -->
     <div class="text-center">
-        <h1 class="text-3x1 font-bold">Star Place</h1>
-        <p class="text-lg mt-2">Sua lista de lugares e preferências</p>
+        <h1 class="text-3x1 font-bold">{{ props().title }}</h1>
+        <p class="text-lg mt-2">{{ props().subtitle }}</p>
     </div>
 
     <!-- Linha de divisão das rotas -->
@@ -18,17 +18,17 @@
 
             <!-- Linha de Galeria -->
             <li>
-                <a class="hover:text-yellow-300">Galeria</a>
+                <a routerLink="/gallery" class="hover:text-yellow-300">Galeria</a>
             </li>
 
             <!-- Linha de Categorias -->
             <li>
-                <a class="hover:text-yellow-300">Categorias</a>
+                <a routerLink="/category" class="hover:text-yellow-300">Categorias</a>
             </li>
 
             <!-- Linha de Lugares -->
             <li>
-                <a class="hover:text-yellow-300">Lugares</a>
+                <a routerLink="/places" class="hover:text-yellow-300">Lugares</a>
             </li>
 
             <!-- Linha para Sair -->

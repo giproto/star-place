@@ -1,1 +1,63 @@
-<h1>Galeria</h1>
+<!-- Filtros de categorias -->
+<form [formGroup]="filterForm">
+    <div class="p-4 bg-white shadow">
+    
+        <!-- Input de pesquisa -->
+        <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+            <input
+                class="w-full border border-gray-300 p-2 rounded shadow-sm focus:ring focus:ring-blue-400"
+                placeholder="Pesquise pelo nome do local"
+                formControlName="name"
+            />
+    
+            <!-- Seleção de categorias na pesquisa -->
+            <select 
+                class="w-full border border-gray-300 p-2 rounded shadow-sm focus:ring focus:ring-blue-400"
+                formControlName="category">
+                <option [value]="null">Todas as categorias</option>
+    
+                <!-- @For para selecionar uma categoria -->
+                @for (category of categories(); track $index) 
+                {
+                    <option [value]="category.id">{{ category.name }}</option>
+                }
+            </select>
+
+            <!-- Botão de pesquisar -->
+            <button
+                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800"
+                (click)="filter()">
+                Pesquisar
+            </button>
+        </div>
+    </div>
+</form>
+
+<!-- Listagem de lugares -->
+<div class="p-4 grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <!-- @For para listagem de lugares por filtro de pesquisa -->
+    @for (place of places(); track $index)
+    {
+        <!-- Imagem do lugar pesquisado -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <img 
+                [src]="place.imageUrl" 
+                [alt]="place.name"
+                class="w-full h-40 object-cover" 
+            />
+
+            <!-- Descrições do lugar pesquisado -->
+            <div class="p-4">
+                <h2 class="text-lg font-semibold">{{ place.name }}</h2>
+                <p class="text-gray-500">Categoria: <span class="text-blue-600">{{ getNameByID(place.category) }}</span></p>
+                <p class="text-gray-500">Localização: {{ place.location }}</p>
+
+                <!-- Avaliação do lugar cadastrado -->
+                <div class="mt-2 flex items-center">
+                    <span class="text-yellow-500" [innerHTML]="getAllStars(place)"></span>
+                </div>
+            </div>
+        </div>
+    }
+</div>

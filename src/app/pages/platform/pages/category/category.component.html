@@ -1,14 +1,14 @@
-<!-- Tela de categorias -->
+<!-- Tela de cadastro de novas categorias -->
 <div class="p-6 max-w-lg mx-auto bg-white shadow-lg rounded-lg mt-6">
 
     <!-- Título de nova categoria -->
     <h2 class="text-2x1 font-semibold text-gray-700 mg-4">Nova Categoria</h2>
     <hr />
 
-    <!-- Formulário de nova categoria -->
+    <!-- Formulário de cadastro de nova categoria -->
     <form [formGroup]="categoryForm">
 
-        <!-- Input de nome -->
+        <!-- Input de nome da categoria -->
         <div class="mb-4">
             <label class="block text-gray-600 font-medium mb-2">Nome</label>
             <input 
@@ -20,11 +20,11 @@
             <!-- If para mostrar ou não o campo obrigatório de acordo com o status de validação do campo -->
             @if(invalidField('name'))
             {
-                <span class="text-red-500 text-sm">Campo obrigatório</span>
+                <span class="text-red-500 text-sm">Campo inválido</span>
             }
         </div>
 
-        <!-- Input de descrição -->
+        <!-- Input de descrição da categoria -->
         <div class="mb-4">
             <label class="block text-gray-600 font-medium mb-2">Descrição</label>
             <textarea
@@ -37,14 +37,14 @@
             <!-- If para mostrar ou não o campo obrigatório de acordo com o status de validação do campo -->
             @if(invalidField('description'))
             {
-                <span class="text-red-500 text-sm">Campo obrigatório</span>
+                <span class="text-red-500 text-sm">Campo inválido</span>
             }
         </div>
 
-        <!-- Botão de cadastrar -->
+        <!-- Botão de cadastrar categoria -->
         <button
             class="w-full bg-blue-600 text-white font-semibold p-3 rounded shadow hover:bg-blue-700"
-            (click)="save()">
+            (click)="saveNewCategory()">
             Cadastrar
         </button>
     </form>

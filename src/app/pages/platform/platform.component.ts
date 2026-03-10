@@ -1,12 +1,54 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, OnInit, inject, signal } from '@angular/core';
+import { RouterOutlet, RouterLinkWithHref, Router, ActivatedRoute } from '@angular/router';
+import { PlatformEntity } from '../../domain/entities/platform.entity';
+import { filter, map } from 'rxjs';
 
 @Component({
     selector: 'platform-page',
     templateUrl: 'platform.component.html',
     styleUrl: 'platform.component.scss',
-    imports: [CommonModule, RouterOutlet]
+    imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLinkWithHref
+],
 })
 
-export class PlatformPageComponent {}
+export class PlatformPageComponent implements OnInit
+{
+    public props = signal<PlatformEntity>({ title: '', subtitle: '' });
+
+    // * Injects
+    private router = inject(Router);
+    private activatedRoute = inject(ActivatedRoute);
+
+    ngOnInit(): void 
+    {
+        this.props.set(this.getPropsPlatform());
+        this.listenToChangeRoutes();
+    }
+
+    // Método para obter dados de rotas e retornar em uma variável
+    public getPropsPlatform(): PlatformEntity
+    {
+        let firstRoute = this.activatedRoute.firstChild;
+
+        while(firstRoute?.firstChild)
+        {
+            firstRoute = firstRoute.firstChild;
+        }
+        
+        return firstRoute?.snapshot.data as PlatformEntity;
+    }
+
+    // Método para observar mudanças de rotas
+    public listenToChangeRoutes(): void
+    {
+        this.router.events.pipe(
+            filter( () => this.activatedRoute.firstChild !== null ),
+            map( () => this.getPropsPlatform())).subscribe(
+                (props: PlatformEntity) => this.props.set(props)
+        );
+    }
+}
