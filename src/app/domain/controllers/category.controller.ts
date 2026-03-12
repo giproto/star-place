@@ -27,6 +27,6 @@ export class CategoryController
     // Método para obter nomes das categorias cadastradas
     public getNameByID(categories: CategoryEntity[], id: string): string
     {
-        return categories.find(x => x.id == id).name;
+        return categories.find(x => x.id == id)?.name;
     }
 }

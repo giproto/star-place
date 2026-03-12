@@ -3,6 +3,7 @@ import { Component, OnInit, inject, signal } from '@angular/core';
 import { RouterOutlet, RouterLinkWithHref, Router, ActivatedRoute } from '@angular/router';
 import { PlatformEntity } from '../../domain/entities/platform.entity';
 import { filter, map } from 'rxjs';
+import { GoogleAuthService } from '../../shared/services/google-auth.service';
 
 @Component({
     selector: 'platform-page',
@@ -22,6 +23,7 @@ export class PlatformPageComponent implements OnInit
     // * Injects
     private router = inject(Router);
     private activatedRoute = inject(ActivatedRoute);
+    private googleAuthService = inject(GoogleAuthService);
 
     ngOnInit(): void 
     {
@@ -50,5 +52,12 @@ export class PlatformPageComponent implements OnInit
             map( () => this.getPropsPlatform())).subscribe(
                 (props: PlatformEntity) => this.props.set(props)
         );
+    }
+
+    // Método para revogar as credenciais e deslogar da conta Google
+    public logoutProfile(): void
+    {
+        this.googleAuthService.logoutProfile();
+        this.router.navigate(['auth']);
     }
 }
