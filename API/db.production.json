@@ -32,14 +32,6 @@
       "location": "Avenida Kennedy, 700, São Bernardo do Campo",
       "imageUrl": "https://storage.googleapis.com/ancarx-stores-images-prd/0013s000013YYjZAAW.jpeg",
       "feedback": "5"
-    },
-    {
-      "id": "ca0bd51c-4ab1-4638-af24-89520725f374",
-      "name": "Shopping Tamboré",
-      "category": "b6d01ab0-6f2f-49e8-9e8c-def1c524a858",
-      "location": "Av. Piracema, 669 - Tamboré, Barueri ",
-      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA5ONs3PqLYx5oBvoNoh8F1AyRuMPSLhMbMA&s",
-      "feedback": "5"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
